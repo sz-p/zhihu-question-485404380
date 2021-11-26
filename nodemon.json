@@ -1,0 +1,17 @@
+{
+    "restartable": "rs",
+    "ignore": [],
+    "verbose": false,
+    "execMap": {
+        "js": "node --harmony"
+    },
+    "watch": ["./src/"],
+    "events": {
+        "restart": "exit"
+    },
+    "env": {
+        "NODE_ENV": "development"
+    },
+    "ext": "js json",
+    "delay": "1000"
+}

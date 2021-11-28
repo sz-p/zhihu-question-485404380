@@ -22,8 +22,18 @@ export const getAnswerListFilePath = function () {
 }
 export const writeAnswerContentToFile = function (fileName: string, content: string) {
   const { QUESTION_ID } = getConfig()
-  const filePath = path.resolve(paths.downloadDir, QUESTION_ID, fileName)
+  const filePath = path.resolve(paths.downloadDir, QUESTION_ID, "answerContentText", fileName)
   fs.writeFileSync(filePath, content)
+}
+export const createAnswerContentTextFile = function () {
+  const { QUESTION_ID } = getConfig()
+  const dirPath = path.resolve(paths.downloadDir, QUESTION_ID, "answerContentText")
+  if (isPathExists(dirPath)) return
+  fs.mkdirSync(dirPath)
+}
+export const createQuestionDirInDownloadDir = function () {
+  const { QUESTION_ID } = getConfig()
+  createNotExistsDirInDownloadDir(QUESTION_ID)
 }
 export const createNotExistsDirInDownloadDir = function (dirInDownloadPath: string) {
   const dirPath = path.resolve(paths.downloadDir, dirInDownloadPath)

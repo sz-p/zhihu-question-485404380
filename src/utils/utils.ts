@@ -2,7 +2,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import paths from "../../configs/paths";
 import merge from "lodash/merge";
-import exp from 'constants';
 export const isPathExists = function (p: string): boolean {
   try {
     fs.accessSync(p);
@@ -11,14 +10,36 @@ export const isPathExists = function (p: string): boolean {
   }
   return true;
 };
+
 export const sleep = function (timeout: number) {
   return new Promise<void>((resolve, reject) => {
     setTimeout(() => { resolve() }, timeout)
   })
 }
+
+export const getCityNameHash = function () {
+  const cityString = fs.readFileSync(path.resolve(__dirname, "./city.json"), 'utf8')
+  const cityJson = JSON.parse(cityString);
+  return cityJson
+}
+
+export const getCityCountFilePath = function () {
+  const { QUESTION_ID } = getConfig()
+  return path.resolve(paths.downloadDir, QUESTION_ID, "cityCount.json")
+}
+
+export const writeTextToCityCountFile = function (text: string) {
+  const filePath = getCityCountFilePath();
+  fs.writeFileSync(filePath, text, { flag: "w+" })
+}
+
 export const getAnswerListFilePath = function () {
   const { QUESTION_ID } = getConfig()
   return path.resolve(paths.downloadDir, QUESTION_ID, "answerList.txt")
+}
+export const getAnswerContentTextDirPath = function () {
+  const { QUESTION_ID } = getConfig()
+  return path.resolve(paths.downloadDir, QUESTION_ID, "answerContentText")
 }
 export const writeAnswerContentToFile = function (fileName: string, content: string) {
   const { QUESTION_ID } = getConfig()

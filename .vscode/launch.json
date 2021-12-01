@@ -8,7 +8,7 @@
       "name": "启动程序",
       "runtimeExecutable": "node",
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register/transpile-only"],
-      "args": ["scripts/start.ts", "--example", "hello"],
+      "args": ["scripts/startAnalysis.ts", "--example", "hello"],
       "cwd": "${workspaceRoot}",
       "internalConsoleOptions": "openOnSessionStart",
       "skipFiles": ["<node_internals>/**", "node_modules/**"]

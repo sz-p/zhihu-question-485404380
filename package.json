@@ -2,19 +2,23 @@
   "name": "node-spider-crawler-starter",
   "version": "0.1.0",
   "scripts": {
-    "start": "ts-node ./scripts/start.ts",
+    "startGetAnswers": "ts-node ./scripts/start.ts",
+    "startAnalysis": "ts-node ./scripts/startAnalysis.ts",
+    "startVisualization": "open-cli http://localhost:3000 && serve",
     "startDev": "nodemon --exec yarn start",
     "build": "ts-node ./scripts/build.ts",
     "showRouter": "ts-node ./scripts/showRouter.ts"
   },
   "dependencies": {
-    "@types/crawler": "^1.2.2",
+    "@node-rs/jieba": "^1.4.0",
     "crawler": "^1.2.1",
     "image-downloader": "^3.5.0",
     "lodash": "^4.17.21",
     "m3u8-to-mp4": "^1.0.0",
     "moment": "^2.27.0",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "open-cli": "^7.0.1",
+    "serve": "^13.0.2"
   },
   "license": "MIT",
   "devDependencies": {
@@ -22,6 +26,7 @@
     "@babel/core": "^7.7.5",
     "@babel/node": "^7.7.4",
     "@babel/preset-env": "^7.7.6",
+    "@types/crawler": "^1.2.2",
     "@types/lodash": "^4.14.177",
     "@types/node": "^16.4.12",
     "babel-loader": "^8.0.6",

@@ -1,4 +1,35 @@
-# nodejs-spider-crawler-starter
-A starter template for nodejs-spider base on crawler
+# 【全国一二线城市中你最不喜欢哪个城市？】 可视化
 
-TODO
+知乎问题[全国一二线城市中你最不喜欢哪个城市？](https://www.zhihu.com/question/485404380)可视化。
+
+![DependencyGraph-screenshot](https://github.com/sz-p/zhihu-question-485404380/raw/HEAD/screenshot.jpg)
+
+
+## 脚本
+```shell
+
+# 安装必要依赖
+yarn install
+
+# 获取该问题下全部回答
+yarn startGetAnswers
+
+# 开始分析所有回答的文字内容
+yarn startAnalysis
+
+# 可视化展示结果
+yarn startVisualization
+```
+## 如何工作
+
+1. 根据知乎接口获取该问题下所有回答并缓存至本地
+2. 对所有回答文字内容进行【去除非中文字符】,【分词】,【统计城市名称】
+3. 基于echarts进行可视化。
+
+## 问题
+
+该程序仅为简单脚本, 自然语言处理部分过于单薄，仅进行了简单分词，并使用分词结果进行投票。以`ID`为`2109357156`回答为例：
+
+> 成都,民富比不过苏杭，综合实力比不过宁武，连重庆也比不过，天天在网上吹牛，把自己吹得比纽约东京还强。跟重庆比的时候说重庆人均不行数据造假，跟南京杭州比拿自己多出来的大几百万一千万人口说别人差。
+
+基于语义理解该回答是在给`成都`投票，但程序会对`成都`,`重庆`,`南京`,`杭州`进行投票(`宁武`,`苏杭`,`纽约`,`东京`会在城市名称过滤阶段滤除)。

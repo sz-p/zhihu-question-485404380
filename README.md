@@ -1,4 +1,4 @@
-# 【全国一二线城市中你最不喜欢哪个城市？】 可视化
+# 最喜欢于最不喜欢的城市
 
 知乎问题[全国一二线城市中你最不喜欢哪个城市？](https://www.zhihu.com/question/485404380)可视化。
 
@@ -17,8 +17,14 @@ yarn startGetAnswers
 # 开始分析所有回答的文字内容
 yarn startAnalysis
 
-# 可视化展示结果
-yarn startVisualization
+# 查看最喜欢城市数据的可视化展示结果
+yarn viewLikeCity
+
+# 查看最不喜欢城市数据的可视化展示结果
+yarn viewUnLikeCity
+
+# 查看同时结合喜欢和不喜欢城市数据的可视化展示结果
+yarn viewAllCity
 ```
 ## 如何工作
 

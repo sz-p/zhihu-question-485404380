@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.min.js"></script>
+  <script src="./echarts-wordcloud.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <title>Visualization</title>
+</head>
+<body>
+  <canvas id="wordcloud" width="800" height="500" style="width: 800px; height: 500px"></canvas>
+  <canvas id="bar" width="800" height="300" style="width: 800px; height: 300px"></canvas>
+  <script>
+    axios.get("./download/485404380/cityCount.json").then((data) => {
+      data = data.data
+      const arrayData = [];
+      const xData = []
+      const citys = Object.keys(data)
+      // [citys[i], data, data[citys[i]]]
+      for (let i = 0; i < citys.length; i++) {
+        arrayData.push({
+          name: citys[i],
+          value: data[citys[i]]
+        })
+      }
+      arrayData.sort((a, b) =>{
+        return b.value - a.value
+      })
+      for (let i = 0; i < arrayData.length; i++) {
+        xData.push(arrayData[i].name)
+      }
+      wordcloudChart.setOption({
+        series: [{
+          type: 'wordCloud',
+          sizeRange: [12, 100],
+          rotationRange: [0, 0],
+          width: '90%',
+          height: '60%',
+          gridSize: 8,
+          textStyle: {
+            fontFamily: '微软雅黑',
+            fontWeight: 'bold',
+            // Color can be a callback function or a color string
+            color: function () {
+              // Random color
+              return 'rgb(' + [
+                Math.round(Math.random() * 160),
+                Math.round(Math.random() * 160),
+                Math.round(Math.random() * 160)
+              ].join(',') + ')';
+            }
+          },
+          data: arrayData
+        }]
+      })
+      barChart.setOption({
+        tooltip: {
+          trigger: 'axis',
+          show: true
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: [
+          {
+            type: 'category',
+            data: xData,
+            axisTick: {
+              alignWithLabel: true
+            }
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value'
+          }
+        ],
+        series: [
+          {
+            name: 'Direct',
+            type: 'bar',
+            barWidth: '60%',
+            data: arrayData
+          }
+        ]
+      })
+    })
+  </script>
+</body>
+
+<style>
+  html body canvas{
+    width: 100%
+  }
+</style>
+
+
+</html>

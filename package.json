@@ -4,7 +4,9 @@
   "scripts": {
     "startGetAnswers": "ts-node ./scripts/start.ts",
     "startAnalysis": "ts-node ./scripts/startAnalysis.ts",
-    "startVisualization": "open-cli http://localhost:3000 && serve",
+    "viewAllCity": "open-cli http://localhost:3000 && serve",
+    "viewLikeCity": "open-cli http://localhost:3001/like && serve -l 3001",
+    "viewUnLikeCity": "open-cli http://localhost:3002/unlike && serve -l 3002",
     "startDev": "nodemon --exec yarn start",
     "build": "ts-node ./scripts/build.ts",
     "showRouter": "ts-node ./scripts/showRouter.ts"

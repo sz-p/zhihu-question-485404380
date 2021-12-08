@@ -1231,5 +1231,13 @@
   "中山": true,
   "潮州": true,
   "揭阳": true,
-  "云浮": true
+  "云浮": true,
+  "北京市": true,
+  "天津市": true,
+  "上海市": true,
+  "重庆市": true,
+  "北京": true,
+  "天津": true,
+  "上海": true,
+  "重庆": true
 }

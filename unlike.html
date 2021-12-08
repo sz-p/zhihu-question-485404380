@@ -13,6 +13,8 @@
   <canvas id="wordcloud" width="800" height="500" style="width: 800px; height: 500px"></canvas>
   <canvas id="bar" width="800" height="300" style="width: 800px; height: 300px"></canvas>
   <script>
+    const wordcloudChart = echarts.init(document.getElementById('wordcloud'));
+    const barChart = echarts.init(document.getElementById('bar'));
     axios.get("./download/485404380/cityCount.json").then((data) => {
       data = data.data
       const arrayData = [];

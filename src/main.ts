@@ -7,6 +7,6 @@ if (!initState) process.exit(1)
 
 const start = async () => {
   await getAllAnswersList()
-  process.exit(1)
+  process.exit(0)
 }
 start()

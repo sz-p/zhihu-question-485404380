@@ -36,7 +36,7 @@ const checkEnd = function (now: number, totals: number) {
     const cityCountFilePath = getCityCountFilePath()
     writeTextToCityCountFile(JSON.stringify(cityCount))
     LoggerSuccess(`已统计全部回答中的城市信息，文件已保存在${cityCountFilePath}.`)
-    process.exit(1)
+    process.exit(0)
   }
 }
 let processedCount = 0
